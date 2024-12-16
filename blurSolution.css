@@ -1,0 +1,27 @@
+To achieve a partial blur effect, we can use an SVG mask. First, create an SVG element with a path defining the area *not* to be blurred.  Then, apply this SVG as a mask to the target element:
+
+```html
+<svg width="200" height="100">
+  <mask id="blur-mask">
+    <rect width="200" height="100" fill="white" />
+    <rect x="50" y="25" width="100" height="50" fill="black" />
+  </mask>
+  <rect x="0" y="0" width="200" height="100" fill="blue" mask="url(#blur-mask)" />
+</svg>
+
+<div class="blurred-element">
+  This text will only be blurred partially
+</div>
+
+<style>
+.blurred-element {
+  width: 200px;
+  height: 100px;
+  background-color: blue;
+  filter: blur(10px);
+  -webkit-mask-image: url('#blur-mask'); /* Safari compatibility */
+  mask-image: url('#blur-mask');
+}
+</style>
+```
+The `rect` with `fill="black" ` inside the mask defines the blurred region. The `rect` with `fill="blue" ` and `mask` attribute represents the element where the mask applies.
