@@ -1,0 +1,1 @@
+The CSS property `filter: blur(10px);` is applied to an element, causing the entire element to become blurry. However, only a specific portion of the element needs to be blurred.  There is no easy way to apply a blur only to part of an element with pure CSS.
